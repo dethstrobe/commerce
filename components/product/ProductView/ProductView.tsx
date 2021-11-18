@@ -10,6 +10,8 @@ import { ProductSlider, ProductCard } from '@components/product'
 import { Container, Text } from '@components/ui'
 import ProductSidebar from '../ProductSidebar'
 import ProductTag from '../ProductTag'
+import { BentoBaseCarousel } from '@bentoproject/base-carousel/react'
+
 interface ProductViewProps {
   product: Product
   relatedProducts: Product[]
@@ -33,7 +35,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
               fontSize={32}
             />
             <div className={s.sliderContainer}>
-              <ProductSlider key={product.id}>
+              <BentoBaseCarousel key={product.id}>
                 {product.images.map((image, i) => (
                   <div key={image.url} className={s.imageContainer}>
                     <Image
@@ -47,7 +49,7 @@ const ProductView: FC<ProductViewProps> = ({ product, relatedProducts }) => {
                     />
                   </div>
                 ))}
-              </ProductSlider>
+              </BentoBaseCarousel>
             </div>
             {process.env.COMMERCE_WISHLIST_ENABLED && (
               <WishlistButton
